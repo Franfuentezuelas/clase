@@ -15,8 +15,8 @@ class Conexion{
         if(empty(self::$con)){
             self::$datos=configCon::configuracion();
             
-            self::$con=new PDO('mysql:host=localhost;dbname=concesionario','root','Fran1234');
-            //self::$con=new PDO(self::$datos['DB_URL'],self::$datos['USER'],self::$datos['PASS']); // aqui en cadena de conexion hay que poner los atributos de conexion
+            //self::$con=new PDO('mysql:host=localhost;dbname=concesionario','root','Fran1234');
+            self::$con=new PDO(self::$datos['DB_URL'],self::$datos['USER'],self::$datos['PASS']); // aqui en cadena de conexion hay que poner los atributos de conexion
         }
         return self::$con;
     }

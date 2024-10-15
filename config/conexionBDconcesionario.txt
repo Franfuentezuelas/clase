@@ -1,1 +1,1 @@
-mysql:host=concesionario;dbname=concesionario,root,Fran1234
+mysql:host=localhost;dbname=concesionario,root,Fran1234
