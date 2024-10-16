@@ -1,9 +1,5 @@
 <?php
 
-$document=$_SERVER["DOCUMENT_ROOT"];
-
-include_once "$document/config/configCon.php";
-
 class Conexion{
     // creamos una conexion con el patron singleton de esta forma solo hay una unica conexion privada que no se puede modificar
     private static PDO $con; // la clase es de tipo conexion

@@ -1,12 +1,17 @@
 <?php
 
-$document=$_SERVER["DOCUMENT_ROOT"];
-include_once "$document/Repositorio/RepoMarca.php";
-include_once "$document/modelo/marca.php";
+include_once "micargador.php";
 
-echo $document;
+
 $resultado = RepoMarca::getAll();
 var_dump($resultado);
+
+$marca = RepoMarca::findByID(5);
+var_dump($marca);
+$marca2 = RepoMarca::findByID(1);
+var_dump($marca2);
+$marca3 = RepoMarca::findByID(3);
+var_dump($marca3);
 ?>
 
 <!DOCTYPE html>

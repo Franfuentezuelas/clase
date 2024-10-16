@@ -1,10 +1,6 @@
 <?php
-$document=$_SERVER["DOCUMENT_ROOT"];
-var_dump ($document);
 
-include_once "$document/Interface/RepoCRUD.php";
-include_once "$document/Repositorio/conexion.php";
-include_once "$document/modelo/marca.php";
+
 
 Class RepoMarca implements RepoCrud
 {
@@ -18,20 +14,23 @@ Class RepoMarca implements RepoCrud
         $marcas=[];
         $con=Conexion::getConection();
         // creo la consulta a la base de datos
-        $sql="SELECT * FROM MARCA where id = :id";
+        $sql="SELECT * FROM MARCAS where id = :id";
         // preparo la consulta a base de datos
         $consulta = $con -> prepare($sql);
         // creo un array con los parametros necesarios para la consulta
-        $parametros = array(":id" => $id);
+        $parametros = array(':id' => $id);
         // realizo la consulta a la base de datos parando el array acosiativo de parametros 
-        $resultado = $consulta->execute($parametros);
+        $consulta->execute($parametros);
+        $fila=$consulta->fetch(PDO::FETCH_ASSOC);
 
+        // aqui es solo un if por que busco si hay uno
+        if($fila){
         // de esta forma recorro los resultados utilizando un array asociativo en los resultados
-        while($fila=$resultado->fetch(PDO::FETCH_ASSOC)){
-            // aqui compongo el objeto y lo agrego a un array de objetos
-            $marca=new Marca($fila["nombre"],$fila["id"]);
-            $marcas[]=$marca;
+                // aqui compongo el objeto y lo agrego a un array de objetos
+                $marca=new Marca($fila["nombre"],$fila["id"]);
+                $marcas[]=$marca;
         }
+
         // devuelvo el array de objetos
         return $marcas;
     }
