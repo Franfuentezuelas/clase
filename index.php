@@ -1,5 +1,7 @@
 <?php
 
+// no hay que incluir los includes por que en index que es la unica puerta tengo la autocarga
+// tiene que estar configurado para poder encontrarlo en los diferentes directorios
 include_once "micargador.php";
 
 
