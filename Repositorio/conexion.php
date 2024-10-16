@@ -10,7 +10,7 @@ class Conexion{
     private static $datos=[];
     
     // funcion que mantiene el patron singleton
-    public static function getConection(){
+    public static function getConection():PDO{
         
         if(empty(self::$con)){
             self::$datos=configCon::configuracion();
